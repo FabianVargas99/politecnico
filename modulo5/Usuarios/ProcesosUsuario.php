@@ -2,6 +2,13 @@
 include_once("Modelo/Usuarios.php");
 
 $Usuario = new Usuarios();
+$Usuario->login('fvargas', '123456');
+echo "Usuario: " . $_SESSION['USUARIO'];
+echo "<br>";
+echo "Nombre: " . $_SESSION['NOMBRE'] . " " . $_SESSION['APELLIDO'];
+echo "<br>";
+echo "Rol: " . $_SESSION['PERFIL'];
+echo "<br>";
 function lis($Usuario)
 {
     $getUsuarios = $Usuario->getUsuarios();
@@ -30,3 +37,4 @@ function lis($Usuario)
 // $Usuario->updateUser(3, "Jhon", "Doe", "jdoe", "159357", "Docente", "Activo");
 // $Usuario->delete(9);
 lis($Usuario);
+print_r($_SESSION);

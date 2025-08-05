@@ -15,10 +15,11 @@ class Usuarios extends Conexion
         $query->execute();
         if ($query->rowCount() == 1) {
             $result = $query->fetch();
-            $_SESSION['NOMBRE'] = $result["NOMBRE"];
-            $_SESSION['APELLIDO'] = $result["APELLIDOS"];
-            $_SESSION['ID'] = $result["ID_USUARIO"];
-            $_SESSION['PERFIL'] = $result["PERFIL"];
+            $_SESSION['NOMBRE'] = $result->NOMBRE;
+            $_SESSION['APELLIDO'] = $result->APELLIDO;
+            $_SESSION['USUARIO'] = $result->USUARIO;
+            $_SESSION['ID'] = $result->ID_USUARIO;
+            $_SESSION['PERFIL'] = $result->PERFIL;
             return true;
         }
         return false;
