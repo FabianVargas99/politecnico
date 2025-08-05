@@ -15,25 +15,21 @@
 <body class="bg-dark text-white">
     <div class="container text-center">
         <div class="row align-items-center justify-content-md-center position-absolute top-50 start-50 translate-middle">
-            <h1 class="text-primary">Desarrollo web II</h1>
-            <h2 class="text-warning">Proyecto:<br>Sistema de notas</h2>
-            <div class="col-6">
+            <!-- <h1 class="text-primary">Desarrollo web II</h1>
+            <h2 class="text-warning">Proyecto:<br>Sistema de notas</h2> -->
+            <div class="col">
                 <h2>LOGIN</h2>
-                <form action="" method="post">
+                <form action="Usuarios/Controladores/Login.php" method="post">
                     <label for="usuario" class="form-label">Usuario</label>
-                    <input type="text" class="form-control" value="Usuario" name="usuario" id="usuario">
+                    <input type="text" class="form-control" placeholder="Usuario" name="usuario" id="usuario">
                     <label for="password" class="form-label">Contraseña</label>
-                    <input type="text" class="form-control" value="Contraseña" , name="password" , id="password">
-                    <input type="submit" class="btn btn-success" value="Entrar" , name="" , id="">
+                    <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password"><br>
+                    <input type="submit" class="btn btn-success" value="Entrar" name="" id="">
                 </form>
             </div>
         </div>
     </div>
     <div class="container">
-        <?php
-        include_once("Usuarios/Vistas/index.php");
-        include_once("Usuarios/ProcesosUsuario.php");
-        ?>
     </div>
 </body>
 

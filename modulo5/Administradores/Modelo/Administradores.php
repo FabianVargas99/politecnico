@@ -1,5 +1,5 @@
 <?php
-require_once "././BD/Conexion.php";
+require_once "../../BD/Conexion.php";
 class Administradores extends Conexion
 {
     public function __construct()

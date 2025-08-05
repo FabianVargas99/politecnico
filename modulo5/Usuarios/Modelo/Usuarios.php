@@ -1,5 +1,5 @@
 <?php
-require_once "././BD/Conexion.php";
+require_once "../../BD/Conexion.php";
 session_start();
 class Usuarios extends Conexion
 {
@@ -42,7 +42,7 @@ class Usuarios extends Conexion
     public function validarSesion()
     {
         if ($_SESSION['ID'] == null) {
-            header('location: ././index.php');
+            header('location: ../../index.php');
         }
     }
 

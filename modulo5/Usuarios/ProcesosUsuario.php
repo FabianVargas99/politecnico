@@ -8,8 +8,6 @@ $admins = new Administradores();
 $Usuario->login('fvargas', '123456');
 function lis($admins)
 {
-    echo "Usuario: " . $_SESSION['USUARIO'];
-    echo "<br>";
     echo "Nombre: " . $_SESSION['NOMBRE'];
     echo "<br>";
     echo "Rol: " . $_SESSION['PERFIL'];
