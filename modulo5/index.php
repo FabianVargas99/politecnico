@@ -12,13 +12,29 @@
     <title>Modulo 5 - Desarrollo web II</title>
 </head>
 
-<body class="container bg-dark text-white">
-    <h1 class="text-primary">Desarrollo web II</h1>
-    <h2 class="text-warning">Proyecto:<br>Sistema de notas</h2>
-    <?php
-    include_once("Usuarios/Vistas/index.php");
-    include_once("Usuarios/ProcesosUsuario.php");
-    ?>
+<body class="bg-dark text-white">
+    <div class="container text-center">
+        <div class="row align-items-center justify-content-md-center position-absolute top-50 start-50 translate-middle">
+            <h1 class="text-primary">Desarrollo web II</h1>
+            <h2 class="text-warning">Proyecto:<br>Sistema de notas</h2>
+            <div class="col-6">
+                <h2>LOGIN</h2>
+                <form action="" method="post">
+                    <label for="usuario" class="form-label">Usuario</label>
+                    <input type="text" class="form-control" value="Usuario" name="usuario" id="usuario">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="text" class="form-control" value="Contraseña" , name="password" , id="password">
+                    <input type="submit" class="btn btn-success" value="Entrar" , name="" , id="">
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <?php
+        include_once("Usuarios/Vistas/index.php");
+        include_once("Usuarios/ProcesosUsuario.php");
+        ?>
+    </div>
 </body>
 
 </html>

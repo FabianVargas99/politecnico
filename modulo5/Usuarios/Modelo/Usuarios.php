@@ -8,16 +8,15 @@ class Usuarios extends Conexion
         $this->db = parent::__construct();
     }
 
-    public function login($usuario, $password){
-        $query = $this->db->prepare("SELECT * FROM usuarios WHERE USUARIO = :usuario AND PASSWORD = :password");
-        $query->bindParam(':usuario', $usuario);
-        $query->bindParam(':password', $password);
-        $query->execute();
-        if ($query->rowCount() == 1) {
-            $result = $query->fetch();
-            $_SESSION['NOMBRE'] = $result->NOMBRE;
-            $_SESSION['APELLIDO'] = $result->APELLIDO;
-            $_SESSION['USUARIO'] = $result->USUARIO;
+    public function login($usuario, $password)
+    {
+        $statement = $this->db->prepare("SELECT * FROM usuarios WHERE USUARIO = :usuario AND PASSWORD = :password");
+        $statement->bindParam(':usuario', $usuario);
+        $statement->bindParam(':password', $password);
+        $statement->execute();
+        if ($statement->rowCount() == 1) {
+            $result = $statement->fetch();
+            $_SESSION['NOMBRE'] = "{$result->NOMBRE} {$result->APELLIDO}";
             $_SESSION['ID'] = $result->ID_USUARIO;
             $_SESSION['PERFIL'] = $result->PERFIL;
             return true;
@@ -25,55 +24,36 @@ class Usuarios extends Conexion
         return false;
     }
 
-    public function addUser($nombre, $apellido, $usuario, $password, $perfil, $estado)
+    public function getNombre()
     {
-        $query = $this->db->prepare("INSERT INTO usuarios (NOMBRE, APELLIDO, USUARIO, PASSWORD, PERFIL, ESTADO) VALUES (:nombre, :apellido, :usuario, :password, :perfil, :estado)");
-        $query->bindParam(':nombre',    $nombre);
-        $query->bindParam(':apellido',  $apellido);
-        $query->bindParam(':usuario',   $usuario);
-        $query->bindParam(':password',  $password);
-        $query->bindParam(':perfil',    $perfil);
-        $query->bindParam(':estado',    $estado);
-        if ($query->execute()) {
-            echo "Registrado Con éxito<br>";
-        } else {
-            echo "Error al registrar usuario<br>";
+        return $_SESSION['NOMBRE'];
+    }
+
+    public function getId()
+    {
+        return $_SESSION['ID'];
+    }
+
+    public function getPerfil()
+    {
+        return $_SESSION['PERFIL'];
+    }
+
+    public function validarSesion()
+    {
+        if ($_SESSION['ID'] == null) {
+            header('location: ././index.php');
         }
     }
-    public function updateUser($id, $nombre, $apellido, $usuario, $password, $perfil, $estado)
+
+    public function validarSesionAdministrador()
     {
-        $query = $this->db->prepare("UPDATE usuarios SET NOMBRE = :nombre, APELLIDO = :apellido, USUARIO = :usuario, PASSWORD = :password, PERFIL = :perfil, ESTADO = :estado WHERE ID_USUARIO = :id");
-        $query->bindParam(':id',        $id);
-        $query->bindParam(':nombre',    $nombre);
-        $query->bindParam(':apellido',  $apellido);
-        $query->bindParam(':usuario',   $usuario);
-        $query->bindParam(':password',  $password);
-        $query->bindParam(':perfil',    $perfil);
-        $query->bindParam(':estado',    $estado);
-        if ($query->execute()) {
-            echo "Actualizado Con éxito<br>";
-        } else {
-            echo "Error al actualizar usuario<br>";
-        }
-    }
-    public function getUsuarios()
-    {
-        $rows = null;
-        $query = $this->db->prepare("SELECT ID_USUARIO, NOMBRE, APELLIDO, USUARIO, PASSWORD, PERFIL, ESTADO FROM usuarios");
-        $query->execute();
-        while ($result = $query->fetch()) {
-            $rows[] = $result;
-        }
-        return $rows;
-    }
-    public function delete($id)
-    {
-        $query = $this->db->prepare("DELETE FROM usuarios WHERE ID_USUARIO = :id");
-        $query->bindParam(':id', $id);
-        if ($query->execute()) {
-            echo "Eliminado exitosamente.";
-        } else {
-            echo "Ocurrio un Error al eliminar.";
+        if ($_SESSION['ID'] != null) {
+            if ($_SESSION['PERFIL'] == "Docente") {
+                header('location: ././Estudiantes/Vistas/index.php');
+            }else{
+                header('location: ././index.php');
+            }
         }
     }
 }

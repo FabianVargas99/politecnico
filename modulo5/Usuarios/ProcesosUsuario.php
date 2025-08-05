@@ -1,17 +1,20 @@
 <?php
+include_once("./Administradores/Modelo/Administradores.php");
 include_once("Modelo/Usuarios.php");
 
 $Usuario = new Usuarios();
+$admins = new Administradores();
+
 $Usuario->login('fvargas', '123456');
-echo "Usuario: " . $_SESSION['USUARIO'];
-echo "<br>";
-echo "Nombre: " . $_SESSION['NOMBRE'] . " " . $_SESSION['APELLIDO'];
-echo "<br>";
-echo "Rol: " . $_SESSION['PERFIL'];
-echo "<br>";
-function lis($Usuario)
+function lis($admins)
 {
-    $getUsuarios = $Usuario->getUsuarios();
+    echo "Usuario: " . $_SESSION['USUARIO'];
+    echo "<br>";
+    echo "Nombre: " . $_SESSION['NOMBRE'];
+    echo "<br>";
+    echo "Rol: " . $_SESSION['PERFIL'];
+    echo "<br>";
+    $getUsuarios = $admins->get();
     echo "<br>";
     foreach ($getUsuarios as $k => $user) {
         echo $user->ID_USUARIO    . " - ";
@@ -21,20 +24,8 @@ function lis($Usuario)
         echo $user->PASSWORD      . " - ";
         echo $user->PERFIL        . " - ";
         echo $user->ESTADO        . "<br>";
-        // echo $user['ID_USUARIO']    . " - ";
-        // echo $user['NOMBRE']        . " - ";
-        // echo $user['APELLIDO']      . " - ";
-        // echo $user['USUARIO']       . " - ";
-        // echo $user['PASSWORD']      . " - ";
-        // echo $user['PERFIL']        . " - ";
-        // echo $user['ESTADO']        . "<br>";
     }
 }
-// $Usuario->addUser(1,"Fabian", "Vargas", "fvargas", "123456", "Administrador", "Activo");
-// $Usuario->addUser(2,"Matias", "De la cruz", "mdelacruz", "654321", "Docente", "Activo");
-// $Usuario->addUser(3,"Jhon", "Doe", "jdoe", "159357", "Docente", "Activo");
-// $Usuario->updateUser(3, 'Jhon1', 'Doe1', 'jdoe1', '159357a', 'Docente1', 'Activos');
-// $Usuario->updateUser(3, "Jhon", "Doe", "jdoe", "159357", "Docente", "Activo");
-// $Usuario->delete(9);
-lis($Usuario);
+lis($admins);
+echo "<br>";
 print_r($_SESSION);
