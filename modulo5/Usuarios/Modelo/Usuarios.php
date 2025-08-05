@@ -1,5 +1,5 @@
 <?php
-require_once "././Conexion.php";
+require_once "././BD/Conexion.php";
 session_start();
 class Usuarios extends Conexion
 {
