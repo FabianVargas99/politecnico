@@ -6,6 +6,7 @@ $ModeloEstudiantes = new Estudiantes();
 
 $ModeloUsuarios->validarSesion();
 $Estudiantes = $ModeloEstudiantes->get();
+echo $Estudiantes==null;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,23 +27,28 @@ $Estudiantes = $ModeloEstudiantes->get();
     <a href="add.php" target="_blank">Registrar Estudiante</a>
     <table class="table table-dark table-striped table-bordered">
         <tr>
-            <?php foreach ($Estudiantes as $campo => $Estudiante) { ?>
-            <tr>
-                <?php foreach ($Estudiante as $campo => $fila) { ?>
-                    <th> <?php echo $campo ?> </th>
-                <?php } ?>
-            </tr>
-        <?php } ?>
+            <?php if ($Estudiantes!=null){ // Aqui habia un error al iterar porque $estudiantes no tenia registros
+                foreach ($Estudiantes as $campo => $Estudiante) { ?>
+                    <tr>
+                        <?php foreach ($Estudiante as $campo => $fila) { ?>
+                            <th> <?php echo $campo ?> </th>
+                        <?php } ?>
+                    </tr>
+            
+            <?php } } ?>
         </tr>
-        <?php foreach ($Estudiantes as $campo => $Estudiante) { ?>
+        <?php if ($Estudiantes!=null){
+            foreach ($Estudiantes as $campo => $Estudiante) { ?>
             <tr>
                 <?php foreach ($Estudiante as $campo => $fila) { ?>
                     <td> <?php echo $fila ?> </td>
                 <?php } ?>
             </tr>
-        <?php } ?>
+        <?php }
+        } ?>
 
     </table>
+    <h2><?php if ($Estudiantes==null)echo "No hay registros";  ?></h2>
 </body>
 
 </html>

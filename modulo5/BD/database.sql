@@ -87,7 +87,32 @@ TRUNCATE TABLE `usuarios`;
 INSERT INTO `usuarios` (`ID_USUARIO`, `NOMBRE`, `APELLIDO`, `USUARIO`, `PASSWORD`, `PERFIL`, `ESTADO`) VALUES
 (1, 'Fabian', 'Vargas', 'fvargas', '123456', 'Administrador', 'Activo'),
 (2, 'Matias', 'De la cruz', 'mdelacruz', '654321', 'Docente', 'Activo'),
-(3, 'Jhon', 'Doe', 'jdoe', '159357', 'Docente', 'Activo');
+
+--
+-- Truncar tablas antes de insertar `usuarios`
+--
+
+TRUNCATE TABLE `estudiantes`;
+--
+-- Volcado de datos para la tabla `estudiantes`
+--
+
+INSERT INTO `estudiantes`(`ID_ESTUDIANTE`, `NOMBRE`, `APELLIDO`, `DOCUMENTO`, `CORREO`, `MATERIA`, `DOCENTE`, `PROMEDIO`, `FECHA_REGISTRO`) VALUES
+(1, 'Jhon', 'Doe', '1593574568', 'jhonD.oe@mail.com', 'Programacion', 'Fabian', '4.5', '2025-08-13')
+
+--
+-- Truncar tablas antes de insertar `materias`
+--
+
+TRUNCATE TABLE `materias`;
+--
+-- Volcado de datos para la tabla `materias`
+--
+
+INSERT INTO `materias` (`ID_MATERIA`, `MATERIA`) VALUES
+(1, 'Programacion Orientada a Objetos'),
+(2, 'Estructura de datos'),
+(3, 'Calculo');
 
 --
 -- Índices para tablas volcadas
