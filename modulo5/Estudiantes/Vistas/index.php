@@ -6,7 +6,7 @@ $ModeloEstudiantes = new Estudiantes();
 
 $ModeloUsuarios->validarSesion();
 $Estudiantes = $ModeloEstudiantes->get();
-echo $Estudiantes==null;
+$thData = ["ID", "NOMBRE", "APELLIDO", "DOCUMENTO", "CORREO", "MATERIA", "DOCENTE", "PROMEDIO", "FECHA DE REGISTRO", "ACCIONES", ];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,32 +23,37 @@ echo $Estudiantes==null;
 </head>
 
 <body class="bg-dark text-white">
-    <h1>Estudiantes</h1>
-    <a href="add.php" target="_blank">Registrar Estudiante</a>
-    <table class="table table-dark table-striped table-bordered">
-        <tr>
-            <?php if ($Estudiantes!=null){ // Aqui habia un error al iterar porque $estudiantes no tenia registros
+    <div class="container">
+        <h1>Estudiantes</h1>
+        <a class="btn btn-primary" href="add.php" target="_blank">Registrar Estudiante</a>
+        <table class="table table-dark table-striped table-bordered">
+            <tr>
+                <?php if ($Estudiantes!=null){ // Aqui habia un error al iterar porque $estudiantes no tenia registros
+                    foreach ($Estudiantes as $campo => $Estudiante) { ?>
+                        <tr>
+                            <?php foreach ($thData as $data) { ?>
+                                <th> <?php echo $data ?> </th>
+                            <?php } ?>
+                        </tr>
+                <?php } } ?>
+            </tr>
+            <?php if ($Estudiantes!=null){
                 foreach ($Estudiantes as $campo => $Estudiante) { ?>
                     <tr>
                         <?php foreach ($Estudiante as $campo => $fila) { ?>
-                            <th> <?php echo $campo ?> </th>
+                            <td> <?php echo $fila ?> </td>
                         <?php } ?>
+                        <td>
+                            <a class="btn btn-warning btn-sm" href="edit.php" target="_blank">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="delete.php" target="_blank">Eliminar</a>
+                        </td>
                     </tr>
-            
-            <?php } } ?>
-        </tr>
-        <?php if ($Estudiantes!=null){
-            foreach ($Estudiantes as $campo => $Estudiante) { ?>
-            <tr>
-                <?php foreach ($Estudiante as $campo => $fila) { ?>
-                    <td> <?php echo $fila ?> </td>
-                <?php } ?>
-            </tr>
-        <?php }
-        } ?>
+                <?php }
+            } ?>
+        </table>
+        <h2><?php if ($Estudiantes==null)echo "No hay registros";  ?></h2>
+    </div>
 
-    </table>
-    <h2><?php if ($Estudiantes==null)echo "No hay registros";  ?></h2>
 </body>
 
 </html>
