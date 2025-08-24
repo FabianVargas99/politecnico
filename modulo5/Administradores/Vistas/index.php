@@ -23,6 +23,7 @@ $thData = ["ID", "NOMBRE", "APELLIDO", "USUARIO", "PERFIL", "ESTADO", "ACCIONES"
 </head>
 
 <body class="bg-dark text-white">
+    <?php include_once("../../header/navbar.php"); ?>
     <div class="container">
         <h1>Administradores</h1>
         <a class="btn btn-primary mb-3" href="add.php" target="_blank">Registrar Administradores</a>
