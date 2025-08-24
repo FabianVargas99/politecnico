@@ -25,17 +25,17 @@ $thData = ["ID", "NOMBRE", "APELLIDO", "DOCUMENTO", "CORREO", "MATERIA", "DOCENT
 <body class="bg-dark text-white">
     <div class="container">
         <h1>Estudiantes</h1>
-        <a class="btn btn-primary" href="add.php" target="_blank">Registrar Estudiante</a>
+        <a class="btn btn-primary mb-3" href="add.php" target="_blank">Registrar Estudiante</a>
         <table class="table table-dark table-striped table-bordered">
             <tr>
-                <?php if ($Estudiantes!=null){ // Aqui habia un error al iterar porque $estudiantes no tenia registros
-                    foreach ($Estudiantes as $campo => $Estudiante) { ?>
-                        <tr>
-                            <?php foreach ($thData as $data) { ?>
-                                <th> <?php echo $data ?> </th>
-                            <?php } ?>
-                        </tr>
-                <?php } } ?>
+                <?php 
+                if ($Estudiantes !=null){ // Aqui habia un error al iterar porque $Estudiantes no tenia registros ?>
+                    <tr>
+                        <?php foreach ($thData as $data) { ?>
+                            <th> <?php echo $data ?> </th>
+                        <?php } ?>
+                    </tr><?php
+                } ?>
             </tr>
             <?php if ($Estudiantes!=null){
                 foreach ($Estudiantes as $campo => $Estudiante) { ?>
