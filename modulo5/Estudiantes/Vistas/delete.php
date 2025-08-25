@@ -1,9 +1,10 @@
 <?php
 require_once('../../Usuarios/Modelo/Usuarios.php');
-require_once('../Modelo/Estudiantes.php');
+require_once('../../Metodos.php');
 $ModeloUsuarios = new Usuarios();
-$ModeloEstudiantes = new Estudiantes();
-
+$ModeloMetodos = new Metodos();
+$Materias = $ModeloMetodos->getMaterias();
+$Docentes = $ModeloMetodos->getDocentes();
 $ModeloUsuarios->validarSesion();
 ?>
 <!DOCTYPE html>
@@ -26,7 +27,7 @@ $ModeloUsuarios->validarSesion();
         <form action="../Controladores/delete.php" method="post">
             <div class="row">
                 <div class="col-3">
-                    <input type="hidden" id="id" value="">
+                    <input type="hidden" id="id" value="<?php echo''; ?>">
                     <p>¿Estas seguro que deseas eliminar el estudiante?</p>
                 </div>
             </div>

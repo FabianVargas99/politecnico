@@ -5,12 +5,11 @@ if ($_POST) {
     $password = $_POST['password'];
 
     $Modelo = new Usuarios();
-    if($Modelo->login($usuario, $password)){
+    if ($Modelo->login($usuario, $password)) {
         header('location: ../../Estudiantes/Vistas/index.php');
-    }else{
+    } else {
         header('location: ../../index.php');
     }
-}else{
+} else {
     header('location: ../../index.php');
 }
-?>

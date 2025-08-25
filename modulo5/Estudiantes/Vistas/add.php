@@ -1,9 +1,12 @@
 <?php
 require_once('../../Usuarios/Modelo/Usuarios.php');
-require_once('../Modelo/Estudiantes.php');
+require_once('../../Metodos.php');
+// require_once('../Modelo/Estudiantes.php');
 $ModeloUsuarios = new Usuarios();
-$ModeloEstudiantes = new Estudiantes();
-
+// $ModeloEstudiantes = new Estudiantes();
+$ModeloMetodos = new Metodos();
+$Materias = $ModeloMetodos->getMaterias();
+$Docentes = $ModeloMetodos->getDocentes();
 $ModeloUsuarios->validarSesion();
 ?>
 <!DOCTYPE html>
@@ -42,19 +45,23 @@ $ModeloUsuarios->validarSesion();
                 <div class="col-3">
                     <label for="materia" class="form-label">Materia</label>
                     <select class="form-select" name="materia" id="materia" required>
-                        <option>Seleccione</option>
-                        <option value="Ingles">Ingles</option>
-                        <option value="Español">Español</option>
-                        <option value="Ciencias">Ciencias</option>
+                        <option selected disabled>Seleccione</option>
+                        <?php if ($Materias != null) {
+                            foreach ($Materias as $Materia) { ?>
+                                <option value="<?php echo $Materia->MATERIA; ?>"><?php echo $Materia->MATERIA; ?></option>
+                        <?php }
+                        } ?>
                     </select>
                 </div>
                 <div class="col-3">
                     <label for="docente" class="form-label">Docente</label>
                     <select class="form-select" name="docente" id="docente" required>
-                        <option>Seleccione</option>
-                        <option>Fabian Vargas</option>
-                        <option>Jhon Doe</option>
-                        <option>Matias de la cruz</option>
+                        <option selected disabled>Seleccione</option>
+                        <?php if ($Docentes != null) {
+                            foreach ($Docentes as $Docente) { ?>
+                                <option value="<?php echo $Docente->NOMBRE . ' ' . $Docente->APELLIDO; ?>"><?php echo $Docente->NOMBRE . ' ' . $Docente->APELLIDO; ?></option>
+                        <?php }
+                        } ?>
                     </select>
                 </div>
             </div>

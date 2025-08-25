@@ -50,7 +50,7 @@ TRUNCATE TABLE `estudiantes`;
 DROP TABLE IF EXISTS `materias`;
 CREATE TABLE `materias` (
   `ID_MATERIA` int(11) NOT NULL,
-  `MATERIA` varchar(30) NOT NULL
+  `MATERIA` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

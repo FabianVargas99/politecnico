@@ -28,31 +28,31 @@ $thData = ["ID", "NOMBRE", "APELLIDO", "DOCUMENTO", "CORREO", "MATERIA", "DOCENT
         <h1>Estudiantes</h1>
         <a class="btn btn-primary mb-3" href="add.php" target="_blank">Registrar Estudiante</a>
         <table class="table table-dark table-striped table-bordered">
-            <tr>
+            <thead>
                 <?php 
-                if ($Estudiantes !=null){ // Aqui habia un error al iterar porque $Estudiantes no tenia registros ?>
+                if ($Estudiantes != null){ // Aqui habia un error al iterar porque $Estudiantes no tenia registros ?>
                     <tr>
                         <?php foreach ($thData as $data) { ?>
-                            <th> <?php echo $data ?> </th>
-                        <?php } ?>
+                            <th> <?php echo $data ?> </th><?php 
+                        } ?>
                     </tr><?php
                 } ?>
-            </tr>
-            <?php if ($Estudiantes!=null){
+            </thead>
+            <?php if ($Estudiantes!= null){
                 foreach ($Estudiantes as $campo => $Estudiante) { ?>
                     <tr>
                         <?php foreach ($Estudiante as $campo => $fila) { ?>
-                            <td> <?php echo $fila ?> </td>
-                        <?php } ?>
+                            <td> <?php echo $fila ?> </td><?php 
+                        } ?>
                         <td>
-                            <a class="btn btn-warning btn-sm" href="edit.php" target="_blank">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="delete.php" target="_blank">Eliminar</a>
+                            <a class="btn btn-warning btn-sm" href="edit.php?id=<?php echo $Estudiante->ID_ESTUDIANTE; ?>" target="_blank">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="delete.php?id=<?php echo $Estudiante->ID_ESTUDIANTE; ?>" target="_blank">Eliminar</a>
                         </td>
-                    </tr>
-                <?php }
+                    </tr><?php 
+                }
             } ?>
         </table>
-        <h2><?php if ($Estudiantes==null)echo "No hay registros";  ?></h2>
+        <h2><?php if ($Estudiantes== null)echo "No hay registros";  ?></h2>
     </div>
 
 </body>

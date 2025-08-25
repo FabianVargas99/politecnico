@@ -27,22 +27,22 @@ $thData = ["ID", "MATERIA", "ACCIONES"];
     <div class="container">
         <h1>Materias</h1>
         <a class="btn btn-primary mb-3" href="add.php" target="_blank">Registrar Materia</a>
-        <table class="table table-dark table-striped table-bordered">
-            <tr>
+        <table class="table table-dark table-striped table-bordered table-responsive">
+            <thead>
                 <?php 
                 if ($Materias !=null){ // Aqui habia un error al iterar porque $Materias no tenia registros ?>
                     <tr>
                         <?php foreach ($thData as $data) { ?>
-                            <th> <?php echo $data ?> </th>
+                            <th id="<?php echo $data ?>" ><?php echo $data ?></th>
                         <?php } ?>
                     </tr><?php
                 } ?>
-            </tr>
+            </thead>
             <?php if ($Materias!=null){
                 foreach ($Materias as $campo => $Estudiante) { ?>
                     <tr>
                         <?php foreach ($Estudiante as $campo => $fila) { ?>
-                            <td> <?php echo $fila ?> </td>
+                            <td><?php echo $fila ?></td>
                         <?php } ?>
                         <td>
                             <a class="btn btn-warning btn-sm" href="edit.php" target="_blank">Editar</a>
@@ -52,7 +52,7 @@ $thData = ["ID", "MATERIA", "ACCIONES"];
                 <?php }
             } ?>
         </table>
-        <h2><?php if ($Materias==null)echo "No hay registros";  ?></h2>
+        <h2><?php if ($Materias==null)echo "No hay registros"; ?></h2>
     </div>
 
 </body>

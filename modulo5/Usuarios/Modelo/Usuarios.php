@@ -1,6 +1,6 @@
 <?php
 require_once "../../BD/Conexion.php";
-session_start();
+session_start(['name' => 'Principal']);
 class Usuarios extends Conexion
 {
     public function __construct()
@@ -51,7 +51,7 @@ class Usuarios extends Conexion
         if ($_SESSION['ID'] != null) {
             if ($_SESSION['PERFIL'] == "Docente") {
                 header('location: ././Estudiantes/Vistas/index.php');
-            }else{
+            } else {
                 header('location: ././index.php');
             }
         }

@@ -28,7 +28,7 @@ $thData = ["ID", "NOMBRE", "APELLIDO", "USUARIO", "PERFIL", "ESTADO", "ACCIONES"
         <h1>Administradores</h1>
         <a class="btn btn-primary mb-3" href="add.php" target="_blank">Registrar Administradores</a>
         <table class="table table-dark table-striped table-bordered">
-            <tr>
+            <thead>
                 <?php 
                 if ($Administradores !=null){ // Aqui habia un error al iterar porque $Administradores no tenia registros ?>
                     <tr>
@@ -37,7 +37,7 @@ $thData = ["ID", "NOMBRE", "APELLIDO", "USUARIO", "PERFIL", "ESTADO", "ACCIONES"
                         <?php } ?>
                     </tr><?php
                 } ?>
-            </tr>
+            </thead>
             <?php if ($Administradores != null){
                 foreach ($Administradores as $campo => $Administrador) { ?>
                     <tr>

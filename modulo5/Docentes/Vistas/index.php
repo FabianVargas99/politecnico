@@ -28,7 +28,7 @@ $thData = ["ID", "NOMBRE", "APELLIDO", "USUARIO", "PERFIL", "ESTADO", "ACCIONES"
         <h1>Docentes</h1>
         <a class="btn btn-primary mb-3" href="add.php" target="_blank">Registrar Docentes</a>
         <table class="table table-dark table-striped table-bordered">
-            <tr>
+            <thead>
                 <?php 
                 if ($Docentes !=null){ // Aqui habia un error al iterar porque $Docentes no tenia registros ?>
                     <tr>
@@ -37,11 +37,10 @@ $thData = ["ID", "NOMBRE", "APELLIDO", "USUARIO", "PERFIL", "ESTADO", "ACCIONES"
                         <?php } ?>
                     </tr><?php
                 } ?>
-            </tr>
+            </thead>
             <?php if ($Docentes != null){
                 foreach ($Docentes as $campo => $Docente) { ?>
-                    <tr>
-                        <?php 
+                    <tr><?php 
                         foreach ($Docente as $campo => $fila) {
                             if($campo!="PASSWORD"){ ?>
                                 <td><?php echo $fila ?></td><?php 
@@ -51,11 +50,11 @@ $thData = ["ID", "NOMBRE", "APELLIDO", "USUARIO", "PERFIL", "ESTADO", "ACCIONES"
                             <a class="btn btn-warning btn-sm" href="edit.php" target="_blank">Editar</a>
                             <a class="btn btn-danger btn-sm" href="delete.php" target="_blank">Eliminar</a>
                         </td>
-                    </tr>
-                <?php }
+                    </tr><?php 
+                }
             } ?>
         </table>
-        <h2><?php if ($Docentes == null)echo "No hay registros";  ?></h2>
+        <h2><?php if ($Docentes == null)echo "No hay registros"; ?></h2>
     </div>
 
 </body>

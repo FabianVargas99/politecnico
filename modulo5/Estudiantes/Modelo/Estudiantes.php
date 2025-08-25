@@ -9,7 +9,7 @@ class Estudiantes extends Conexion
 
     public function add($nombre, $apellido, $documento, $correo, $materia, $docente, $promedio, $fecha)
     {
-        $statement = $this->db->prepare("INSERT INTO estudiantes (NOMBRE, APELLIDO, USUARIO, DOCUMENTO, DOCENTE, PROMEDIO, FECHA_REGISTRO) VALUES (:nombre, :apellido, :documento, :correo, :materia, :docente, :promedio, :fecha)");
+        $statement = $this->db->prepare("INSERT INTO estudiantes (NOMBRE, APELLIDO, DOCUMENTO, CORREO, MATERIA, DOCENTE, PROMEDIO, FECHA_REGISTRO) VALUES (:nombre, :apellido, :documento, :correo, :materia, :docente, :promedio, :fecha)");
         $statement->bindParam(':nombre',    $nombre);
         $statement->bindParam(':apellido',  $apellido);
         $statement->bindParam(':documento', $documento);
@@ -19,9 +19,10 @@ class Estudiantes extends Conexion
         $statement->bindParam(':promedio',  $promedio);
         $statement->bindParam(':fecha',     $fecha);
         if ($statement->execute()) {
-            header('location: ./Vistas/index.php');
+            // header('location: ../Vistas/index.php');
+            echo '<script>window.close();</script>';
         } else {
-            header('location: ./Vistas/add.php');
+            header('location: ../Vistas/add.php');
         }
     }
 

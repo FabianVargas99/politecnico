@@ -18,12 +18,12 @@
             <!-- <h1 class="text-primary">Desarrollo web II</h1>
             <h2 class="text-warning">Proyecto:<br>Sistema de notas</h2> -->
             <div class="col">
-                <h2>LOGIN</h2>
+                <h2>INICIAR SESION</h2>
                 <form action="Usuarios/Controladores/Login.php" method="post">
                     <label for="usuario" class="form-label">Usuario</label>
-                    <input type="text" class="form-control" placeholder="Usuario" name="usuario" id="usuario">
+                    <input type="text" class="form-control" placeholder="Usuario" name="usuario" id="usuario" autocomplete="off" required>
                     <label for="password" class="form-label">Contraseña</label>
-                    <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password"><br>
+                    <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password" autocomplete="off" required><br>
                     <input type="submit" class="btn btn-success" value="Entrar" name="" id="">
                 </form>
             </div>
@@ -32,5 +32,9 @@
     <div class="container">
     </div>
 </body>
+<script>
+    document.getElementById('usuario').value = 'fvargas';
+    document.getElementById('password').value = '123456';
+</script>
 
 </html>

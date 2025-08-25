@@ -1,10 +1,16 @@
 <?php
 require_once('../../Usuarios/Modelo/Usuarios.php');
 require_once('../Modelo/Estudiantes.php');
+require_once('../../Metodos.php');
 $ModeloUsuarios = new Usuarios();
 $ModeloEstudiantes = new Estudiantes();
-
+$ModeloMetodos = new Metodos();
 $ModeloUsuarios->validarSesion();
+$Materias = $ModeloMetodos->getMaterias();
+$Docentes = $ModeloMetodos->getDocentes();
+
+$id = $_GET['id'];
+$Estudiante = $ModeloEstudiantes->getById($id);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,45 +32,54 @@ $ModeloUsuarios->validarSesion();
         <form action="../Controladores/edit.php" method="post">
             <div class="row">
                 <div class="col-3">
-                    <input type="hidden" id="id" value="">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" placeholder="Nombre" name="nombre" id="nombre" required>
-                    <label for="documento" class="form-label">Documento</label>
-                    <input type="text" class="form-control" placeholder="Documento" name="documento" id="documento" required>
-                </div>
-                <div class="col-3">
-                    <label for="apellido" class="form-label">Apellido</label>
-                    <input type="text" class="form-control" placeholder="Apellido" name="apellido" id="apellido" required>
-                    <label for="correo" class="form-label">Correo</label>
-                    <input type="text" class="form-control" placeholder="Correo" name="correo" id="correo" required>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-3">
-                    <label for="materia" class="form-label">Materia</label>
-                    <select class="form-select" name="materia" id="materia" required>
-                        <option>Seleccione</option>
-                        <option value="Ingles">Ingles</option>
-                        <option value="Español">Español</option>
-                        <option value="Ciencias">Ciencias</option>
-                    </select>
-                </div>
-                <div class="col-3">
-                    <label for="docente" class="form-label">Docente</label>
-                    <select class="form-select" name="docente" id="docente" required>
-                        <option>Seleccione</option>
-                        <option>Fabian Vargas</option>
-                        <option>Jhon Doe</option>
-                        <option>Matias de la cruz</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-3 mb-3">
-                    <label class="form-label" for="number">Promedio</label>
-                    <input class="form-control" min="0" max="100" type="number" placeholder="Promedio" name="promedio" id="promedio" required>
-                </div>
-            </div>
+                    <input type="hidden" id="id" value="<?php echo $id; ?>">
+                    <?php if ($Estudiante != null){
+                        foreach ($Estudiante as $info) { ?>
+                            <label for="nombre" class="form-label">Nombre</label>
+                            <input type="text" class="form-control" value="<?php echo $info->NOMBRE; ?>" placeholder="Nombre" name="nombre" id="nombre" required>
+                            <label for="documento" class="form-label">Documento</label>
+                            <input type="text" class="form-control" value="<?php echo $info->DOCUMENTO; ?>" placeholder="Documento" name="documento" id="documento" required>
+                        </div>
+                        <div class="col-3">
+                            <label for="apellido" class="form-label">Apellido</label>
+                            <input type="text" class="form-control" value="<?php echo $info->APELLIDO; ?>" placeholder="Apellido" name="apellido" id="apellido" required>
+                            <label for="correo" class="form-label">Correo</label>
+                            <input type="text" class="form-control" value="<?php echo $info->CORREO; ?>" placeholder="Correo" name="correo" id="correo" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3">
+                            <label for="materia" class="form-label">Materia</label>
+                            <select class="form-select" name="materia" id="materia" required>
+                                <option>Seleccione</option>
+                                <?php if ($Materias != null) {
+                                    foreach ($Materias as $Materia) { ?>
+                                        <option <?php echo ($Materia->MATERIA == $info->MATERIA? " selected ":' '); ?> value="<?php echo $Materia->MATERIA; ?>"><?php echo $Materia->MATERIA; ?></option>
+                                <?php }
+                                } ?>
+                            </select>
+                        </div>
+                        <div class="col-3">
+                            <label for="docente" class="form-label">Docente</label>
+                            <select class="form-select" name="docente" id="docente" required>
+                                <option>Seleccione</option>
+                                <?php if ($Docentes != null) {
+                                    foreach ($Docentes as $Docente) { 
+                                        $nombreCompleto = $Docente->NOMBRE . ' ' . $Docente->APELLIDO;?>
+                                        <option <?php echo ($nombreCompleto == ($info->NOMBRE . ' ' . $info->APELLIDO)? " selected ":' '); ?> value="<?php echo $nombreCompleto; ?>"><?php echo $nombreCompleto; ?></option>
+                                <?php }
+                                } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-3 mb-3">
+                            <label class="form-label" for="number">Promedio</label>
+                            <input class="form-control" min="0" max="100" type="number" value="<?php echo $info->PROMEDIO; ?>" placeholder="Promedio" name="promedio" id="promedio" required>
+                        </div>
+                    </div>
+                <?php }
+            } ?>
             <input class="btn btn-success" type="submit" value="Editar">
             <a class="btn btn-danger" onclick="window.close()">Cancelar</a>
         </form><br>
