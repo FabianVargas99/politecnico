@@ -26,7 +26,7 @@ $ModeloUsuarios->validarSesion();
         <form action="../Controladores/edit.php" method="post">
             <div class="row">
                 <div class="col-3 mb-3">
-                    <input type="hidden" id="id" value="">
+                    <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
                     <label for="materia" class="form-label">Materia</label>
                     <input type="text" class="form-control mb-3" placeholder="Materia" name="materia" id="materia" required>
                     <input class="btn btn-success" type="submit" value="Editar">

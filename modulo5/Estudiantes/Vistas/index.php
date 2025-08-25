@@ -42,7 +42,7 @@ $thData = ["ID", "NOMBRE", "APELLIDO", "DOCUMENTO", "CORREO", "MATERIA", "DOCENT
                 foreach ($Estudiantes as $campo => $Estudiante) { ?>
                     <tr>
                         <?php foreach ($Estudiante as $campo => $fila) { ?>
-                            <td> <?php echo $fila ?> </td><?php 
+                            <td><?php echo $fila.($campo=="PROMEDIO"?"%":"") ?></td><?php 
                         } ?>
                         <td>
                             <a class="btn btn-warning btn-sm" href="edit.php?id=<?php echo $Estudiante->ID_ESTUDIANTE; ?>" target="_blank">Editar</a>

@@ -39,14 +39,14 @@ $thData = ["ID", "MATERIA", "ACCIONES"];
                 } ?>
             </thead>
             <?php if ($Materias!=null){
-                foreach ($Materias as $campo => $Estudiante) { ?>
+                foreach ($Materias as $campo => $materia) { ?>
                     <tr>
-                        <?php foreach ($Estudiante as $campo => $fila) { ?>
+                        <?php foreach ($materia as $campo => $fila) { ?>
                             <td><?php echo $fila ?></td>
                         <?php } ?>
                         <td>
-                            <a class="btn btn-warning btn-sm" href="edit.php" target="_blank">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="delete.php" target="_blank">Eliminar</a>
+                            <a class="btn btn-warning btn-sm" href="edit.php?id=<?php echo $materia->ID_MATERIA; ?>" target="_blank">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="delete.php?id=<?php echo $materia->ID_MATERIA; ?>" target="_blank">Eliminar</a>
                         </td>
                     </tr>
                 <?php }

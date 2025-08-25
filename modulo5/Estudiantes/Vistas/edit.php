@@ -31,10 +31,10 @@ $Estudiante = $ModeloEstudiantes->getById($id);
         <h1>Editar Estudiantes</h1>
         <form action="../Controladores/edit.php" method="post">
             <div class="row">
-                <div class="col-3">
-                    <input type="hidden" id="id" value="<?php echo $id; ?>">
-                    <?php if ($Estudiante != null){
-                        foreach ($Estudiante as $info) { ?>
+                <?php if ($Estudiante != null){
+                    foreach ($Estudiante as $info) { ?>
+                        <div class="col-3">
+                            <input type="hidden" name="id" id="id" value="<?php echo $id;?>">
                             <label for="nombre" class="form-label">Nombre</label>
                             <input type="text" class="form-control" value="<?php echo $info->NOMBRE; ?>" placeholder="Nombre" name="nombre" id="nombre" required>
                             <label for="documento" class="form-label">Documento</label>
@@ -46,40 +46,41 @@ $Estudiante = $ModeloEstudiantes->getById($id);
                             <label for="correo" class="form-label">Correo</label>
                             <input type="text" class="form-control" value="<?php echo $info->CORREO; ?>" placeholder="Correo" name="correo" id="correo" required>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3">
-                            <label for="materia" class="form-label">Materia</label>
-                            <select class="form-select" name="materia" id="materia" required>
-                                <option>Seleccione</option>
-                                <?php if ($Materias != null) {
-                                    foreach ($Materias as $Materia) { ?>
-                                        <option <?php echo ($Materia->MATERIA == $info->MATERIA? " selected ":' '); ?> value="<?php echo $Materia->MATERIA; ?>"><?php echo $Materia->MATERIA; ?></option>
-                                <?php }
-                                } ?>
-                            </select>
                         </div>
-                        <div class="col-3">
-                            <label for="docente" class="form-label">Docente</label>
-                            <select class="form-select" name="docente" id="docente" required>
-                                <option>Seleccione</option>
-                                <?php if ($Docentes != null) {
-                                    foreach ($Docentes as $Docente) { 
-                                        $nombreCompleto = $Docente->NOMBRE . ' ' . $Docente->APELLIDO;?>
-                                        <option <?php echo ($nombreCompleto == ($info->NOMBRE . ' ' . $info->APELLIDO)? " selected ":' '); ?> value="<?php echo $nombreCompleto; ?>"><?php echo $nombreCompleto; ?></option>
-                                <?php }
-                                } ?>
-                            </select>
+                        <div class="row">
+                            <div class="col-3">
+                                <label for="materia" class="form-label">Materia</label>
+                                <select class="form-select" name="materia" id="materia" required>
+                                    <option>Seleccione</option>
+                                    <?php if ($Materias != null) {
+                                        foreach ($Materias as $Materia) { ?>
+                                            <option <?php echo ($Materia->MATERIA == $info->MATERIA? " selected ":' '); ?> value="<?php echo $Materia->MATERIA; ?>"><?php echo $Materia->MATERIA; ?></option>
+                                    <?php }
+                                    } ?>
+                                </select>
+                            </div>
+                            <div class="col-3">
+                                <label for="docente" class="form-label">Docente</label>
+                                <select class="form-select" name="docente" id="docente" required>
+                                    <option>Seleccione</option>
+                                    <?php if ($Docentes != null) {
+                                        foreach ($Docentes as $Docente) { 
+                                            $nombreCompletoBd = $Docente->NOMBRE . ' ' . $Docente->APELLIDO;
+                                            ?>
+                                            <option <?php echo ($nombreCompletoBd == $info->DOCENTE ? " selected ":' '); ?> value="<?php echo $nombreCompletoBd; ?>"><?php echo $nombreCompletoBd; ?></option>
+                                    <?php }
+                                    } ?>
+                                </select>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-3 mb-3">
-                            <label class="form-label" for="number">Promedio</label>
-                            <input class="form-control" min="0" max="100" type="number" value="<?php echo $info->PROMEDIO; ?>" placeholder="Promedio" name="promedio" id="promedio" required>
+                        <div class="row">
+                            <div class="col-3 mb-3">
+                                <label class="form-label" for="number">Promedio</label>
+                                <input class="form-control" min="0" max="100" type="number" value="<?php echo $info->PROMEDIO; ?>" placeholder="Promedio" name="promedio" id="promedio" required>
+                            </div>
                         </div>
-                    </div>
-                <?php }
-            } ?>
+                    <?php }
+                } ?>
             <input class="btn btn-success" type="submit" value="Editar">
             <a class="btn btn-danger" onclick="window.close()">Cancelar</a>
         </form><br>

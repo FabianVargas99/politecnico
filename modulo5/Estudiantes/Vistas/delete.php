@@ -6,6 +6,7 @@ $ModeloMetodos = new Metodos();
 $Materias = $ModeloMetodos->getMaterias();
 $Docentes = $ModeloMetodos->getDocentes();
 $ModeloUsuarios->validarSesion();
+$id = $_GET['id'];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -27,7 +28,7 @@ $ModeloUsuarios->validarSesion();
         <form action="../Controladores/delete.php" method="post">
             <div class="row">
                 <div class="col-3">
-                    <input type="hidden" id="id" value="<?php echo''; ?>">
+                    <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
                     <p>¿Estas seguro que deseas eliminar el estudiante?</p>
                 </div>
             </div>

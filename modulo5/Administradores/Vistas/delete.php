@@ -3,7 +3,7 @@ require_once('../../Usuarios/Modelo/Usuarios.php');
 require_once('../Modelo/Administradores.php');
 $ModeloUsuarios = new Usuarios();
 $ModeloAdministradores = new Administradores();
-
+$id = $_GET['id'];
 $ModeloUsuarios->validarSesion();
 ?>
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ $ModeloUsuarios->validarSesion();
         <form action="../Controladores/delete.php" method="post">
             <div class="row">
                 <div class="col-3">
-                    <input type="hidden" id="id" value="">
+                    <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
                     <p>¿Estas seguro que deseas eliminar este Administrador?</p>
                 </div>
             </div>

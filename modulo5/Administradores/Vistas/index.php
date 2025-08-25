@@ -48,8 +48,8 @@ $thData = ["ID", "NOMBRE", "APELLIDO", "USUARIO", "PERFIL", "ESTADO", "ACCIONES"
                             }
                         } ?>
                         <td>
-                            <a class="btn btn-warning btn-sm" href="edit.php" target="_blank">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="delete.php" target="_blank">Eliminar</a>
+                            <a class="btn btn-warning btn-sm" href="edit.php?id=<?php echo $Administrador->ID_USUARIO; ?>" target="_blank">Editar</a>
+                            <a class="btn btn-danger btn-sm" href="delete.php?id=<?php echo $Administrador->ID_USUARIO; ?>" target="_blank">Eliminar</a>
                         </td>
                     </tr>
                 <?php }

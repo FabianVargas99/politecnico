@@ -12,9 +12,9 @@ class Materias extends Conexion
         $statement = $this->db->prepare("INSERT INTO materias (MATERIA) VALUES (:materia)");
         $statement->bindParam(':materia',    $materia);
         if ($statement->execute()) {
-            header('location: ./Vistas/index.php');
+            header('location: ../Vistas/index.php');
         } else {
-            header('location: ./Vistas/add.php');
+            header('location: ../Vistas/add.php');
         }
     }
 
@@ -48,9 +48,9 @@ class Materias extends Conexion
         $statement->bindParam(':id',    $id);
         $statement->bindParam(':materia',    $materia);
         if ($statement->execute()) {
-            header('location: ./Vistas/index.php');
+            header('location: ../Vistas/index.php');
         } else {
-            header('location: ./Vistas/edit.php');
+            header('location: ../Vistas/edit.php');
         }
     }
 
@@ -59,9 +59,9 @@ class Materias extends Conexion
         $statement = $this->db->prepare("DELETE FROM materias WHERE ID_MATERIA = :id");
         $statement->bindParam(':id', $id);
         if ($statement->execute()) {
-            header('location: ./Vistas/index.php');
+            header('location: ../Vistas/index.php');
         } else {
-            header('location: ./Vistas/delete.php');
+            header('location: ../Vistas/delete.php');
         }
     }
 }

@@ -53,7 +53,6 @@ class Estudiantes extends Conexion
     {
         $query = "UPDATE estudiantes SET NOMBRE = :nombre, APELLIDO = :apellido, DOCUMENTO = :documento, CORREO = :correo,  MATERIA = :materia, DOCENTE = :docente, PROMEDIO = :promedio, FECHA_REGISTRO = :fecha WHERE ID_ESTUDIANTE = :id";
         $statement = $this->db->prepare($query);
-        $statement->bindParam(':id',        $id);
         $statement->bindParam(':nombre',    $nombre);
         $statement->bindParam(':apellido',  $apellido);
         $statement->bindParam(':documento', $documento);
@@ -62,10 +61,12 @@ class Estudiantes extends Conexion
         $statement->bindParam(':docente',   $docente);
         $statement->bindParam(':promedio',  $promedio);
         $statement->bindParam(':fecha',     $fecha);
+        $statement->bindParam(':id',        $id);
         if ($statement->execute()) {
-            header('location: ./Vistas/index.php');
+            header('location: ../Vistas/index.php');
+            echo '<script>window.close();</script>';
         } else {
-            header('location: ./Vistas/edit.php');
+            header('location: ../Vistas/edit.php');
         }
     }
 
@@ -74,9 +75,10 @@ class Estudiantes extends Conexion
         $statement = $this->db->prepare("DELETE FROM estudiantes WHERE ID_ESTUDIANTE = :id");
         $statement->bindParam(':id', $id);
         if ($statement->execute()) {
-            header('location: ./Vistas/index.php');
+            // header('location: ../Vistas/index.php');
+            echo '<script>window.close();</script>';
         } else {
-            header('location: ./Vistas/delete.php');
+            header('location: ../Vistas/delete.php');
         }
     }
 }

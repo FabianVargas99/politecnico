@@ -1,8 +1,8 @@
 <?php
 require_once('../../Usuarios/Modelo/Usuarios.php');
-require_once('../Modelo/Administradores.php');
+require_once('../Modelo/Docentes.php');
 $ModeloUsuarios = new Usuarios();
-$ModeloAdministradores = new Administradores();
+$ModeloDocentes = new Docentes();
 
 $ModeloUsuarios->validarSesion();
 ?>
@@ -17,12 +17,12 @@ $ModeloUsuarios->validarSesion();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"></script>
-    <title>Registrar Administradores</title>
+    <title>Registrar Docentes</title>
 </head>
 
 <body class="bg-dark text-white">
     <div class="container">
-        <h1>Registrar Administradores</h1>
+        <h1>Registrar Docentes</h1>
         <form action="../Controladores/add.php" method="post">
             <div class="row">
                 <div class="col-3">

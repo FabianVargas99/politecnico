@@ -15,9 +15,9 @@ class Docentes extends Conexion
         $statement->bindParam(':usuario',   $usuario);
         $statement->bindParam(':password',  $password);
         if ($statement->execute()) {
-            header('location: ./Vistas/index.php');
+            header('location: ../Vistas/index.php');
         } else {
-            header('location: ./Vistas/add.php');
+            header('location: ../Vistas/add.php');
         }
     }
 
@@ -55,9 +55,9 @@ class Docentes extends Conexion
         $statement->bindParam(':password',  $password);
         $statement->bindParam(':estado',    $estado);
         if ($statement->execute()) {
-            header('location: ./Vistas/index.php');
+            header('location: ../Vistas/index.php');
         } else {
-            header('location: ./Vistas/edit.php');
+            header('location: ../Vistas/edit.php');
         }
     }
 
@@ -66,9 +66,10 @@ class Docentes extends Conexion
         $statement = $this->db->prepare("DELETE FROM usuarios WHERE ID_USUARIO = :id");
         $statement->bindParam(':id', $id);
         if ($statement->execute()) {
-            header('location: ./Vistas/index.php');
+            // header('location: ../Vistas/index.php');
+            echo '<script>window.close();</script>';
         } else {
-            header('location: ./Vistas/delete.php');
+            header('location: ../Vistas/delete.php');
         }
     }
 }
