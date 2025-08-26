@@ -3,8 +3,10 @@ require_once('../../Usuarios/Modelo/Usuarios.php');
 require_once('../Modelo/Materias.php');
 $ModeloUsuarios = new Usuarios();
 $ModeloMaterias = new Materias();
-
 $ModeloUsuarios->validarSesion();
+$id = $_GET['id'];
+$Materias = $ModeloMaterias->getById($id);
+if ($Materias != null) $Materias = $ModeloMaterias->getById($id)[0];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,17 +25,23 @@ $ModeloUsuarios->validarSesion();
 <body class="bg-dark text-white">
     <div class="container">
         <h1>Editar Materias</h1>
-        <form action="../Controladores/edit.php" method="post">
-            <div class="row">
-                <div class="col-3 mb-3">
-                    <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
-                    <label for="materia" class="form-label">Materia</label>
-                    <input type="text" class="form-control mb-3" placeholder="Materia" name="materia" id="materia" required>
-                    <input class="btn btn-success" type="submit" value="Editar">
-                    <a class="btn btn-danger" onclick="window.close()">Cancelar</a>
+        <?php if ($Materias != null) {?>
+            <form action="../Controladores/edit.php" method="post">
+                <div class="row">
+                    <div class="col-3 mb-3">
+                        <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
+                        <label for="materia" class="form-label">Materia</label>
+                        <input type="text" class="form-control mb-3" value="<?php echo $Materias->MATERIA ?>" placeholder="Materia" name="materia" id="materia" required>
+                        <input class="btn btn-success" type="submit" value="Editar">
+                        <a class="btn btn-danger" href="../Vistas/index.php">Cancelar</a>
+                    </div>
                 </div>
-        </form><br>
+            </form><br><?php
+        } else {
+            echo "<h2 class='text-danger'>No existe materia con el id=$id</h2>";
+        } ?>
     </div>
+        
 </body>
 
 </html>

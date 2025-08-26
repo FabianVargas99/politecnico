@@ -26,7 +26,7 @@ $thData = ["ID", "MATERIA", "ACCIONES"];
     <?php include_once("../../header/navbar.php"); ?>
     <div class="container">
         <h1>Materias</h1>
-        <a class="btn btn-primary mb-3" href="add.php" target="_blank">Registrar Materia</a>
+        <a class="btn btn-primary mb-3" href="add.php" >Registrar Materia</a>
         <table class="table table-dark table-striped table-bordered table-responsive">
             <thead>
                 <?php 
@@ -45,8 +45,8 @@ $thData = ["ID", "MATERIA", "ACCIONES"];
                             <td><?php echo $fila ?></td>
                         <?php } ?>
                         <td>
-                            <a class="btn btn-warning btn-sm" href="edit.php?id=<?php echo $materia->ID_MATERIA; ?>" target="_blank">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="delete.php?id=<?php echo $materia->ID_MATERIA; ?>" target="_blank">Eliminar</a>
+                            <a class="btn btn-warning btn-sm" href="edit.php?id=<?php echo $materia->ID_MATERIA; ?>" >Editar</a>
+                            <a class="btn btn-danger btn-sm" href="delete.php?id=<?php echo $materia->ID_MATERIA; ?>" >Eliminar</a>
                         </td>
                     </tr>
                 <?php }

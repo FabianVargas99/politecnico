@@ -66,8 +66,7 @@ class Docentes extends Conexion
         $statement = $this->db->prepare("DELETE FROM usuarios WHERE ID_USUARIO = :id");
         $statement->bindParam(':id', $id);
         if ($statement->execute()) {
-            // header('location: ../Vistas/index.php');
-            echo '<script>window.close();</script>';
+            header('location: ../Vistas/index.php');
         } else {
             header('location: ../Vistas/delete.php');
         }

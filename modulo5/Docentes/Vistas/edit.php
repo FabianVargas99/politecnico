@@ -3,8 +3,10 @@ require_once('../../Usuarios/Modelo/Usuarios.php');
 require_once('../Modelo/Docentes.php');
 $ModeloUsuarios = new Usuarios();
 $ModeloDocentes = new Docentes();
-
 $ModeloUsuarios->validarSesion();
+$id = $_GET['id'];
+$Docentes = $ModeloDocentes->getById($id);
+if ($Docentes != null) $Docentes = $ModeloDocentes->getById($id)[0];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,36 +25,37 @@ $ModeloUsuarios->validarSesion();
 <body class="bg-dark text-white">
     <div class="container">
         <h1>Editar Docentes</h1>
-        <form action="../Controladores/edit.php" method="post">
-            <div class="row">
-                <div class="col-3">
-                    <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" class="form-control" placeholder="Nombre" name="nombre" id="nombre" required>
-                    <label for="usuario" class="form-label">Usuario</label>
-                    <input type="text" class="form-control" placeholder="Usuario" name="usuario" id="usuario" required>
+        <?php if ($Docentes != null) {?>
+            <form action="../Controladores/edit.php" method="post">
+                <div class="row">
+                    <div class="col-3">
+                        <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" value="<?php echo $Docentes->NOMBRE ?>" placeholder="Nombre" name="nombre" id="nombre" required>
+                        <label for="usuario" class="form-label">Usuario</label>
+                        <input type="text" class="form-control" value="<?php echo $Docentes->USUARIO ?>" placeholder="Usuario" name="usuario" id="usuario" required>
+                    </div>
+                    <div class="col-3 mb-3">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" value="<?php echo $Docentes->APELLIDO ?>" placeholder="Apellido" name="apellido" id="apellido" required>
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" value="<?php echo $Docentes->PASSWORD ?>" placeholder="Password" name="password" id="password" required>
+                    </div>
+
                 </div>
-                <div class="col-3 mb-3">
-                    <label for="apellido" class="form-label">Apellido</label>
-                    <input type="text" class="form-control" placeholder="Apellido" name="apellido" id="apellido" required>
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" placeholder="Password" name="password" id="password" required>
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <label for="estado" class="form-label">Estado</label>
+                        <select class="form-select" name="estado" id="estado" required>
+                            <option <?php echo ($Docentes->ESTADO == "Activo" ? " selected " : "") ?> value="Activo">Activo</option>
+                            <option <?php echo ($Docentes->ESTADO == "Inactivo" ? " selected " : "") ?> value="Inactivo">Inactivo</option>
+                        </select>
+                    </div>
                 </div>
-                
-            </div>
-            <div class="row">
-                <div class="col-6 mb-3">
-                    <label for="estado" class="form-label">Estado</label>
-                    <select class="form-select" name="estado" id="estado" required>
-                        <option>Seleccione</option>
-                        <option value="Activo">Activo</option>
-                        <option value="Inactivo">Inactivo</option>
-                    </select>
-                </div>
-            </div>
-            <input class="btn btn-success" type="submit" value="Editar">
-            <a class="btn btn-danger" onclick="window.close()">Cancelar</a>
-        </form><br>
+                <input class="btn btn-success" type="submit" value="Editar">
+                <a class="btn btn-danger" href="../Vistas/index.php">Cancelar</a>
+            </form><br><?php 
+        }else echo "<h2 class='text-danger'>No hay Docentes con el id=$id</h2>" ?>
     </div>
 </body>
 

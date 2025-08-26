@@ -26,7 +26,7 @@ $thData = ["ID", "NOMBRE", "APELLIDO", "DOCUMENTO", "CORREO", "MATERIA", "DOCENT
     <?php include_once("../../header/navbar.php"); ?>
     <div class="container">
         <h1>Estudiantes</h1>
-        <a class="btn btn-primary mb-3" href="add.php" target="_blank">Registrar Estudiante</a>
+        <a class="btn btn-primary mb-3" href="add.php" >Registrar Estudiante</a>
         <table class="table table-dark table-striped table-bordered">
             <thead>
                 <?php 
@@ -45,8 +45,8 @@ $thData = ["ID", "NOMBRE", "APELLIDO", "DOCUMENTO", "CORREO", "MATERIA", "DOCENT
                             <td><?php echo $fila.($campo=="PROMEDIO"?"%":"") ?></td><?php 
                         } ?>
                         <td>
-                            <a class="btn btn-warning btn-sm" href="edit.php?id=<?php echo $Estudiante->ID_ESTUDIANTE; ?>" target="_blank">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="delete.php?id=<?php echo $Estudiante->ID_ESTUDIANTE; ?>" target="_blank">Eliminar</a>
+                            <a class="btn btn-warning btn-sm" href="edit.php?id=<?php echo $Estudiante->ID_ESTUDIANTE; ?>" >Editar</a>
+                            <a class="btn btn-danger btn-sm" href="delete.php?id=<?php echo $Estudiante->ID_ESTUDIANTE; ?>" >Eliminar</a>
                         </td>
                     </tr><?php 
                 }

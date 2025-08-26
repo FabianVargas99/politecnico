@@ -43,10 +43,10 @@ class Materias extends Conexion
 
     public function update($id, $materia)
     {
-        $query = "UPDATE materias SET MATERIA = :materia WHERE ID_USUARIO = :id";
+        $query = "UPDATE materias SET MATERIA = :materia WHERE ID_MATERIA = :id";
         $statement = $this->db->prepare($query);
-        $statement->bindParam(':id',    $id);
         $statement->bindParam(':materia',    $materia);
+        $statement->bindParam(':id',    $id);
         if ($statement->execute()) {
             header('location: ../Vistas/index.php');
         } else {

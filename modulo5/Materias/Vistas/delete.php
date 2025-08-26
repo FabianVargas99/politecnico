@@ -2,9 +2,11 @@
 require_once('../../Usuarios/Modelo/Usuarios.php');
 require_once('../Modelo/Materias.php');
 $ModeloUsuarios = new Usuarios();
-$ModeloMaterias = new Materias();
-$id = $_GET['id'];
+$ModeloMateria = new Materias();
 $ModeloUsuarios->validarSesion();
+$id = $_GET['id'];
+$Materia = null;
+if ($ModeloMateria->getById($id) != null) $Materia = $ModeloMateria->getById($id)[0];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,16 +25,18 @@ $ModeloUsuarios->validarSesion();
 <body class="bg-dark text-white">
     <div class="container">
         <h1>Eliminar Materias</h1>
-        <form action="../Controladores/delete.php" method="post">
-            <div class="row">
-                <div class="col-3">
-                    <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
-                    <p>¿Estas seguro que deseas eliminar la Materia?</p>
+        <?php if ($Materia != null){ ?>
+            <form action="../Controladores/delete.php" method="post">
+                <div class="row">
+                    <div class="col-3">
+                        <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
+                        <p>¿Estas seguro que deseas eliminar la Materia: <?php echo $Materia->MATERIA ?></p>
+                    </div>
                 </div>
-            </div>
-            <input class="btn btn-success" type="submit" value="Eliminar">
-            <a class="btn btn-danger" onclick="window.close()">Cancelar</a>
-        </form><br>
+                <input class="btn btn-success" type="submit" value="Eliminar">
+                <a class="btn btn-danger" href="../Vistas/index.php">Cancelar</a>
+            </form><br><?php 
+        }else echo "<h2 class='text-danger'>No hay Administradores con el id=$id</h2>" ?>
     </div>
 </body>
 

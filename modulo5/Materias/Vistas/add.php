@@ -32,7 +32,7 @@ $ModeloUsuarios->validarSesion();
 
             </div>
             <input class="btn btn-success" type="submit" value="Registrar">
-            <a class="btn btn-danger" onclick="window.close()">Cancelar</a>
+            <a class="btn btn-danger" href="../Vistas/index.php">Cancelar</a>
         </form><br>
     </div>
 </body>

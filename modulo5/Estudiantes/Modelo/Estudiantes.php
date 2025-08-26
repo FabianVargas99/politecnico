@@ -19,8 +19,7 @@ class Estudiantes extends Conexion
         $statement->bindParam(':promedio',  $promedio);
         $statement->bindParam(':fecha',     $fecha);
         if ($statement->execute()) {
-            // header('location: ../Vistas/index.php');
-            echo '<script>window.close();</script>';
+            header('location: ../Vistas/index.php');
         } else {
             header('location: ../Vistas/add.php');
         }
@@ -64,7 +63,7 @@ class Estudiantes extends Conexion
         $statement->bindParam(':id',        $id);
         if ($statement->execute()) {
             header('location: ../Vistas/index.php');
-            echo '<script>window.close();</script>';
+            
         } else {
             header('location: ../Vistas/edit.php');
         }
@@ -75,8 +74,8 @@ class Estudiantes extends Conexion
         $statement = $this->db->prepare("DELETE FROM estudiantes WHERE ID_ESTUDIANTE = :id");
         $statement->bindParam(':id', $id);
         if ($statement->execute()) {
-            // header('location: ../Vistas/index.php');
-            echo '<script>window.close();</script>';
+            header('location: ../Vistas/index.php');
+            
         } else {
             header('location: ../Vistas/delete.php');
         }

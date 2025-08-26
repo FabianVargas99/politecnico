@@ -3,8 +3,10 @@ require_once('../../Usuarios/Modelo/Usuarios.php');
 require_once('../Modelo/Docentes.php');
 $ModeloUsuarios = new Usuarios();
 $ModeloDocentes = new Docentes();
-$id = $_GET['id'];
 $ModeloUsuarios->validarSesion();
+$id = $_GET['id'];
+$Docente = null;
+if ($ModeloDocentes->getById($id) != null) $Docente = $ModeloDocentes->getById($id)[0];
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -23,16 +25,18 @@ $ModeloUsuarios->validarSesion();
 <body class="bg-dark text-white">
     <div class="container">
         <h1>Eliminar Docentes</h1>
+        <?php if ($Docente != null){ ?>
         <form action="../Controladores/delete.php" method="post">
             <div class="row">
                 <div class="col-3">
                     <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
-                    <p>¿Estas seguro que deseas eliminar este Docente?</p>
+                    <p>¿Estas seguro que deseas eliminar este Docente: <?php echo $Docente->NOMBRE. ' '. $Docente->APELLIDO ?>?</p>
                 </div>
             </div>
             <input class="btn btn-success" type="submit" value="Eliminar">
-            <a class="btn btn-danger" onclick="window.close()">Cancelar</a>
-        </form><br>
+            <a class="btn btn-danger" href="../Vistas/index.php">Cancelar</a>
+        </form><br><?php 
+        }else echo "<h2 class='text-danger'>No hay Administradores con el id=$id</h2>" ?>
     </div>
 </body>
 

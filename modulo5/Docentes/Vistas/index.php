@@ -26,7 +26,7 @@ $thData = ["ID", "NOMBRE", "APELLIDO", "USUARIO", "PERFIL", "ESTADO", "ACCIONES"
     <?php include_once("../../header/navbar.php"); ?>
     <div class="container">
         <h1>Docentes</h1>
-        <a class="btn btn-primary mb-3" href="add.php" target="_blank">Registrar Docentes</a>
+        <a class="btn btn-primary mb-3" href="add.php" >Registrar Docentes</a>
         <table class="table table-dark table-striped table-bordered">
             <thead>
                 <?php 
@@ -47,8 +47,8 @@ $thData = ["ID", "NOMBRE", "APELLIDO", "USUARIO", "PERFIL", "ESTADO", "ACCIONES"
                             }
                         } ?>
                         <td>
-                            <a class="btn btn-warning btn-sm" href="edit.php?id=<?php echo $Docente->ID_USUARIO; ?>" target="_blank">Editar</a>
-                            <a class="btn btn-danger btn-sm" href="delete.php?id=<?php echo $Docente->ID_USUARIO; ?>" target="_blank">Eliminar</a>
+                            <a class="btn btn-warning btn-sm" href="edit.php?id=<?php echo $Docente->ID_USUARIO; ?>" >Editar</a>
+                            <a class="btn btn-danger btn-sm" href="delete.php?id=<?php echo $Docente->ID_USUARIO; ?>" >Eliminar</a>
                         </td>
                     </tr><?php 
                 }
