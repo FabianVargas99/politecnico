@@ -1,9 +1,7 @@
 <?php
 require_once('../../Usuarios/Modelo/Usuarios.php');
 require_once('../../Metodos.php');
-// require_once('../Modelo/Estudiantes.php');
 $ModeloUsuarios = new Usuarios();
-// $ModeloEstudiantes = new Estudiantes();
 $ModeloMetodos = new Metodos();
 $Materias = $ModeloMetodos->getMaterias();
 $Docentes = $ModeloMetodos->getDocentes();

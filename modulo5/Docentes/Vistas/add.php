@@ -1,8 +1,6 @@
 <?php
 require_once('../../Usuarios/Modelo/Usuarios.php');
-require_once('../Modelo/Docentes.php');
 $ModeloUsuarios = new Usuarios();
-$ModeloDocentes = new Docentes();
 
 $ModeloUsuarios->validarSesion();
 ?>

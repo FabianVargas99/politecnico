@@ -4,7 +4,7 @@ require_once('../Modelo/Docentes.php');
 $ModeloUsuarios = new Usuarios();
 $ModeloDocentes = new Docentes();
 
-$ModeloUsuarios->validarSesion();
+$ModeloUsuarios->validarSesionAdministrador();
 $Docentes  = $ModeloDocentes->get();
 $thData = ["ID", "NOMBRE", "APELLIDO", "USUARIO", "PERFIL", "ESTADO", "ACCIONES"];
 ?>

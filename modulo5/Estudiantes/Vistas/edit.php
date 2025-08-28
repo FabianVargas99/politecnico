@@ -3,8 +3,9 @@ require_once('../../Usuarios/Modelo/Usuarios.php');
 require_once('../Modelo/Estudiantes.php');
 require_once('../../Metodos.php');
 $ModeloUsuarios = new Usuarios();
-$ModeloEstudiantes = new Estudiantes();
 $ModeloMetodos = new Metodos();
+$ModeloEstudiantes = new Estudiantes();
+
 $ModeloUsuarios->validarSesion();
 $Materias = $ModeloMetodos->getMaterias();
 $Docentes = $ModeloMetodos->getDocentes();

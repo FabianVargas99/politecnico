@@ -11,12 +11,9 @@
         crossorigin="anonymous"></script>
     <title>Modulo 5 - Desarrollo web II</title>
 </head>
-
 <body class="bg-dark text-white">
     <div class="container text-center">
         <div class="row align-items-center justify-content-md-center position-absolute top-50 start-50 translate-middle">
-            <!-- <h1 class="text-primary">Desarrollo web II</h1>
-            <h2 class="text-warning">Proyecto:<br>Sistema de notas</h2> -->
             <div class="col">
                 <h2>INICIAR SESION</h2>
                 <form action="Usuarios/Controladores/Login.php" method="post">
@@ -24,7 +21,7 @@
                     <input type="text" class="form-control" placeholder="Usuario" name="usuario" id="usuario" autocomplete="off" required>
                     <label for="password" class="form-label">Contraseña</label>
                     <input type="password" class="form-control" placeholder="Contraseña" name="password" id="password" autocomplete="off" required><br>
-                    <input type="submit" class="btn btn-success" value="Entrar" name="" id="">
+                    <input type="submit" class="btn btn-success" value="Entrar">
                 </form>
             </div>
         </div>
@@ -32,9 +29,5 @@
     <div class="container">
     </div>
 </body>
-<script>
-    document.getElementById('usuario').value = 'fvargas';
-    document.getElementById('password').value = '123456';
-</script>
 
 </html>

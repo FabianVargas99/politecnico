@@ -1,4 +1,12 @@
-<?php $arr = explode('/', $_SERVER["REQUEST_URI"]); ?>
+<?php
+$arr = explode('/', $_SERVER["REQUEST_URI"]);
+require_once('../../Usuarios/Modelo/Usuarios.php');
+
+$ModeloUsuarios = new Usuarios();
+$perfil = $ModeloUsuarios->getPerfil();
+$navBarOptions = ($perfil == 'Administrador' ? ['Administradores', 'Docentes', 'Estudiantes', 'Materias'] : ['Estudiantes']);
+
+?>
 
 <nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-dark border-bottom border-body" data-bs-theme="dark">
   <div class="container">
@@ -9,22 +17,18 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link <?php echo ($arr[3] == "Administradores" ? "active" : "") ?>" aria-current="page" href="../../Administradores/vistas/index.php">Administrador</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <?php echo ($arr[3] == "Docentes" ? "active" : "") ?>" href="../../Docentes/vistas/index.php">Docente</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <?php echo ($arr[3] == "Estudiantes" ? "active" : "") ?>" href="../../Estudiantes/vistas/index.php">Estudiantes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link <?php echo ($arr[3] == "Materias" ? "active" : "") ?>" href="../../Materias/vistas/index.php">Materias</a>
-          </li>
+          <?php
+          foreach ($navBarOptions as $op) { ?>
+            <li class="nav-item">
+              <a class="nav-link <?php echo ($arr[3] == $op ? "active" : "") ?>" aria-current="page" <?php echo 'href="../../'.$op.'/vistas/index.php"' ?> ><?php echo $op ?></a>
+            </li>
+          <?php
+          }
+          ?>
         </ul>
         <li class="nav-item dropdown d-flex">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <?php echo $_SESSION['NOMBRE']; ?>
+            <?php echo $ModeloUsuarios->getNombre(); ?>
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
@@ -32,7 +36,7 @@
             <li>
               <hr class="dropdown-divider">
             </li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="../../Usuarios/Controladores/Salir.php">Cerrar Sesion</a></li>
           </ul>
         </li>
         <a class="nav-link"></a>

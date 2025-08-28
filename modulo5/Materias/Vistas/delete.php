@@ -3,6 +3,7 @@ require_once('../../Usuarios/Modelo/Usuarios.php');
 require_once('../Modelo/Materias.php');
 $ModeloUsuarios = new Usuarios();
 $ModeloMateria = new Materias();
+
 $ModeloUsuarios->validarSesion();
 $id = $_GET['id'];
 $Materia = null;

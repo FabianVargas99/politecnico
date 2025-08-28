@@ -45,7 +45,7 @@
                 <div class="col-3">
                     <label for="pais" class="form-label">Pais</label>
                     <select name="pais" id="pais" class="form-select" required="true">
-                        <option value="" disabled selected>Pais</option>
+                        <option disabled selected>Pais</option>
                         <?php foreach ($paises as $pais) { ?>
                             <option value="<?php echo $pais ?>"><?php echo $pais ?></option>
                         <?php } ?>
@@ -59,7 +59,7 @@
 
                     <label for="edad" class="form-label">Edad</label>
                     <select name="edad" id="edad" class="form-select" required="true">
-                        <option value="" disabled selected>Edad</option>
+                        <option disabled selected>Edad</option>
                         <?php foreach ($edades as $edad) { ?>
                             <option value="<?php echo $edad ?>"><?php echo $edad ?></option>
                         <?php } ?>
@@ -74,7 +74,7 @@
                 <div class="col-3">
                     <label for="diplomado" class="form-label">Diplomado</label>
                     <select name="diplomado" id="diplomado" class="form-select" required="true">
-                        <option value="" disabled selected>diplomado</option>
+                        <option disabled selected>diplomado</option>
                         <?php foreach ($diplomados as $diplomado) { ?>
                             <option value="<?php echo $diplomado ?>"><?php echo $diplomado ?></option>
                         <?php } ?>

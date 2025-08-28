@@ -4,7 +4,7 @@ require_once('../Modelo/Materias.php');
 $ModeloUsuarios = new Usuarios();
 $ModeloMaterias = new Materias();
 
-$ModeloUsuarios->validarSesion();
+$ModeloUsuarios->validarSesionAdministrador();
 $Materias = $ModeloMaterias->get();
 $thData = ["ID", "MATERIA", "ACCIONES"];
 ?>

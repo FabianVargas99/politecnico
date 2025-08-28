@@ -4,7 +4,7 @@ require_once('../Modelo/Administradores.php');
 $ModeloUsuarios = new Usuarios();
 $ModeloAdministradores = new Administradores();
 
-$ModeloUsuarios->validarSesion();
+$ModeloUsuarios->validarSesionAdministrador();
 $Administradores  = $ModeloAdministradores->get();
 $thData = ["ID", "NOMBRE", "APELLIDO", "USUARIO", "PERFIL", "ESTADO", "ACCIONES"];
 ?>

@@ -49,11 +49,13 @@ class Usuarios extends Conexion
     public function validarSesionAdministrador()
     {
         if ($_SESSION['ID'] != null) {
-            if ($_SESSION['PERFIL'] == "Docente") {
-                header('location: ././Estudiantes/Vistas/index.php');
-            } else {
-                header('location: ././index.php');
+            if ($_SESSION['PERFIL'] == 'Docente') {
+                header('location: ../../Estudiantes/Vistas/index.php');
             }
         }
+    }
+    public function salir(){
+        $_SESSION = null;
+        session_destroy();
     }
 }
